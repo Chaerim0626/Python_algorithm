@@ -233,7 +233,7 @@ def isPrime(x):
 
 a = [12, 13, 7, 9, 19]
 for y in a:
-    if isPrime(y)
+    if isPrime(y):
         print(y, end=' ')
 
 
