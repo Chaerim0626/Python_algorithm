@@ -237,7 +237,17 @@ for y in a:
         print(y, end=' ')
 
 
-#람다 함수
+#람다 함수 = 익명함수, 표현식
+plus_two = lambda x: x+2
+print(plus_two(1)) #변수 호출
+
+def plus_one(x):
+    return x+1
+
+a = [1, 2, 3]
+print(list(map(plus_one, a)))
+print(list(map(lambda x: x+1, a)))
+
 
 
 
