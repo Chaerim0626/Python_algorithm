@@ -1,5 +1,5 @@
 import sys
-sys.stdin=open("input.txt", "rt")
+#sys.stdin=open("input.txt", "rt")
 
 T=int(input()) #case개수
 for t in range(T):
