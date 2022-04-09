@@ -8,7 +8,7 @@ for x in range(1, a+1):
         c.append(x)
     else:
         continue
-
+  
 if b-1 < len(c):
     print(c[b-1])
 else:
