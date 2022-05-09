@@ -5,12 +5,9 @@ input = sys.stdin.readline
 n, m = map(int, input().split())
 
 board = [input().rstrip() for _ in range(n)]
-visited = [[0]*m for _ in range(n)]
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
+visited = [[False]*m for _ in range(n)]
 dq = deque()
-dq.append((0,0))
-visited[0][0] = 1
+
 
 while dq:
     x, y = dq.popleft()
