@@ -22,4 +22,4 @@ res += ' '
 res += ' '.join(c)
 print(len(res))
 print(res[:2*m-1])
-
+dd
