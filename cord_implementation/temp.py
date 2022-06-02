@@ -1,20 +1,35 @@
-import sys
-input = sys.stdin.readline
-n, m = map(int, input().split())
-trees = list((map(int, input().split())))
+#5214
+from collections import deque
 
-start = 0
-end = max(trees)
+N, K, M = map(int, input().split())
 
-while start <= end:
-    mid = (start+end)//2
-    cutTree = 0
+# 0 ~ N-1: 역, N ~ N+M-1: 하이퍼튜브
+adj = [[] for _ in range(N + M)]
+for i in range(N, N + M):  # i: 하이퍼튜브
+    for j in map(lambda x: x - 1, map(int, input().split())):  # j: 역
+        adj[i].append(j)
+        adj[j].append(i)
 
-    for tree in trees:
-        if tree > mid:
-            cutTree += tree - mid #자른 나무수 갱신
-    if cutTree < m :
-        end = mid -1
-    else:
-        start = mid + 1
-print(end)
+
+def bfs():
+    chk = [False] * (N + M)
+    chk[0] = True
+    q = deque()
+    q.append((0, 1))
+    while q:
+        now, d = q.popleft()
+
+        if now == N - 1:
+            return (d + 1) // 2
+
+        nd = d + 1
+        for nxt in adj[now]:
+            if not chk[nxt]:
+                chk[nxt] = True
+                q.append((nxt, nd))
+
+    return -1
+
+
+print(bfs())
+
