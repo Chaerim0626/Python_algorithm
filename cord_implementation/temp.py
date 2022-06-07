@@ -1,35 +1,22 @@
-#5214
-from collections import deque
-
-N, K, M = map(int, input().split())
-
-# 0 ~ N-1: 역, N ~ N+M-1: 하이퍼튜브
-adj = [[] for _ in range(N + M)]
-for i in range(N, N + M):  # i: 하이퍼튜브
-    for j in map(lambda x: x - 1, map(int, input().split())):  # j: 역
-        adj[i].append(j)
-        adj[j].append(i)
+def solution(places):
+    answer = []
+    for i in range(5):
+        places[i]
 
 
-def bfs():
-    chk = [False] * (N + M)
-    chk[0] = True
-    q = deque()
-    q.append((0, 1))
-    while q:
-        now, d = q.popleft()
+    return answer
+def is_valid_coord(y,x):
+    return 0 <= x < 5 and 0 <= y < 5
 
-        if now == N - 1:
-            return (d + 1) // 2
+def dfs(y,x,board):
+    dy = [1,0,-1,0]
+    dx = [0,1,0,-1]
 
-        nd = d + 1
-        for nxt in adj[now]:
-            if not chk[nxt]:
-                chk[nxt] = True
-                q.append((nxt, nd))
-
-    return -1
+    for k in range(4):
+        ny = y + dy[k]
+        nx = x + dx[k]
+        if is_valid_coord(ny,nx) and board[ny][nx] == 'O'
 
 
-print(bfs())
-
+places = [["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"], ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"], ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"], ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"], ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]]
+print(solution(places))
